@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Relearn 5.9.4">
+    <meta name="description" content="">
+    <title>Pandas :: 420-SN1-A24</title>
+    <link href="/cours/pandas/index.xml" rel="alternate" type="application/rss+xml" title="Pandas :: 420-SN1-A24">
+    <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
+    <link href="/css/fontawesome-all.min.css?1723907842" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fontawesome-all.min.css?1723907842" rel="stylesheet"></noscript>
+    <link href="/css/featherlight.min.css?1723907842" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/featherlight.min.css?1723907842" rel="stylesheet"></noscript>
+    <link href="/css/auto-complete.css?1723907842" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/auto-complete.css?1723907842" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar.min.css?1723907842" rel="stylesheet">
+    <link href="/css/nucleus.css?1723907842" rel="stylesheet">
+    <link href="/css/fonts.css?1723907842" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fonts.css?1723907842" rel="stylesheet"></noscript>
+    <link href="/css/theme.css?1723907842" rel="stylesheet">
+    <link href="/css/theme-zen-dark.css?1723907842" rel="stylesheet" id="variant-style">
+    <link href="/css/ie.css?1723907842" rel="stylesheet">
+    <link href="/css/variant.css?1723907842" rel="stylesheet">
+    <link href="/css/print.css?1723907842" rel="stylesheet" media="print">
+    <script src="/js/url.js?1723907842"></script>
+    <script src="/js/variant.js?1723907842"></script>
+    <script>
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      window.index_js_url="/index.search.js";
+      var root_url="/";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      window.T_No_results_found = 'No results found for \u0022{0}\u0022';
+      window.T_N_results_found = '{1} results found for \u0022{0}\u0022';
+      // some further base stuff
+      var baseUriFull='http:\/\/example.org/';
+      window.variants && variants.init( [ 'zen-dark' ] );
+    </script>
+    <script src="/js/jquery.min.js?1723907842" defer></script>
+  </head>
+  <body class="mobile-support html" data-url="/cours/pandas/index.html">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable" dir="ltr">
+        <div>
+          <div class="navigation">
+            <a class="nav nav-next" href="/cours/matplotlib/index.html" title="Matplotlib (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+            <a class="nav nav-prev" href="/cours/traces-dex%C3%A9cution/index.html" title="Traces d&#39;exécution (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu (CTRL+ALT+n)'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents (CTRL+ALT+t)'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/index.html"><span itemprop="name">420-SN1-A24</span></a><meta itemprop="position" content="1"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/cours/index.html"><span itemprop="name">Cours</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Pandas</span><meta itemprop="position" content="3"></li>
+            </ol>
+          </div>
+          <div class="default-animation progress">
+            <div class="toc-wrapper" dir="ltr">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#quest-ce-que-pandas-et-pourquoi-lutiliser-">Qu&rsquo;est-ce que Pandas et pourquoi l&rsquo;utiliser ?</a></li>
+    <li><a href="#utilisation-de-pandas">Utilisation de Pandas</a></li>
+    <li><a href="#les-structures-de-données-de-base">Les structures de données de base</a>
+      <ul>
+        <li><a href="#les-series">Les Series</a></li>
+      </ul>
+    </li>
+    <li><a href="#les-dataframes">Les DataFrames</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#le-traitement-de-fichiers-textes">Le traitement de fichiers textes</a></li>
+    <li><a href="#introduction-aux-fichiers-csv">Introduction aux fichiers CSV</a></li>
+    <li><a href="#lecture-dun-fichier-csv">Lecture d&rsquo;un fichier CSV</a></li>
+    <li><a href="#écriture-dans-un-fichier-csv">Écriture dans un fichier CSV</a></li>
+    <li><a href="#les-paramètres-de-la-méthode-read_csv">Les paramètres de la méthode <code>read_csv</code></a></li>
+    <li><a href="#les-paramètres-de-la-méthode-to_csv">Les paramètres de la méthode <code>to_csv</code></a></li>
+    <li><a href="#manipulation-des-données">Manipulation des données</a></li>
+    <li><a href="#manipulation-de-données">Manipulation de données</a>
+      <ul>
+        <li><a href="#exploration-des-données">Exploration des données</a></li>
+        <li><a href="#nettoyage-de-données">Nettoyage de Données</a></li>
+      </ul>
+    </li>
+    <li><a href="#lanalyse-de-données">L&rsquo;analyse de données</a>
+      <ul>
+        <li><a href="#les-statistiques-descriptives">Les statistiques descriptives</a></li>
+        <li><a href="#filtrer-les-données">Filtrer les données</a></li>
+        <li><a href="#grouper-les-données">Grouper les données</a></li>
+      </ul>
+    </li>
+    <li><a href="#la-manipulation-de-dates">La manipulation de dates</a>
+      <ul>
+        <li><a href="#importation-du-module">Importation du module</a></li>
+      </ul>
+    </li>
+    <li><a href="#création-dobjets-date-et-heure">Création d&rsquo;objets Date et Heure</a>
+      <ul>
+        <li><a href="#date">Date</a></li>
+        <li><a href="#heure">Heure</a></li>
+        <li><a href="#date-et-heure">Date et Heure</a></li>
+      </ul>
+    </li>
+    <li><a href="#manipulation-des-dates-et-heures">Manipulation des Dates et Heures</a>
+      <ul>
+        <li><a href="#extraction-des-composants">Extraction des composants</a></li>
+        <li><a href="#calculs-avec-les-dates">Calculs avec les dates</a></li>
+        <li><a href="#formatage-des-dates">Formatage des dates</a></li>
+      </ul>
+    </li>
+    <li><a href="#visualisation-des-données">Visualisation des données</a></li>
+    <li><a href="#atelier">Atelier</a></li>
+  </ul>
+</nav>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable default" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+          </div>
+          <article class="default">
+<h1 id="pandas">Pandas</h1>
+
+<p>
+		
+<a href="/cours/pandas/pandas.jpg?width=30vw" data-featherlight="image">
+<img src="/cours/pandas/pandas.jpg?width=30vw" alt="" style="height: auto; width: 30vw;" loading="lazy">
+</a>.</p>
+<h2 id="quest-ce-que-pandas-et-pourquoi-lutiliser-">Qu&rsquo;est-ce que Pandas et pourquoi l&rsquo;utiliser ?</h2>
+<ul>
+<li>Pandas a été développé pour fournir des structures de données flexibles et intuitives, permettant de <strong>manipuler facilement des tableaux de données</strong> avec des étiquettes de variables (colonnes) et d’individus (lignes).</li>
+<li>Pandas a été créé par Wes McKinney en 2008, depuis, elle est devenue une bibliothèque de référence pour l’analyse de données en Python.</li>
+<li>Pandas se distingue par sa capacité à manipuler des <strong>données hétérogènes</strong> et étiquetées, contrairement à <strong>NumPy</strong> qui est principalement utilisé pour les tableaux numériques homogènes.</li>
+<li>De plus, Pandas intègre des fonctionnalités de visualisation via Matplotlib</li>
+<li>Les principales structures de données de Pandas sont les <strong>Series</strong> et les <strong>DataFrames</strong>.</li>
+</ul>
+<h2 id="utilisation-de-pandas">Utilisation de Pandas</h2>
+<ul>
+<li>Pour commencer, vous devez l&rsquo;importer dans votre script Python :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span></code></pre></div><ul>
+<li>Pour vérifier que Pandas est bien installé sur votre environnement :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Version de Pandas</span>
+</span></span><span style="display:flex;"><span>pd<span style="color:#f92672">.</span>__version__
+</span></span></code></pre></div><h2 id="les-structures-de-données-de-base">Les structures de données de base</h2>
+<h3 id="les-series">Les Series</h3>
+<ul>
+<li>Une <strong>Series</strong> est une structure de données <strong>unidimensionnelle</strong> similaire à une liste ou un tableau.</li>
+<li>Chaque élément d’une Series a un <strong>index</strong>, ce qui permet un accès rapide et efficace aux données.</li>
+<li>L&rsquo;index du premier élément est 0, le deuxième élément 1, etc.</li>
+<li>Pour une Series de taille n éléments, les index seront donc de 0 à n-1.</li>
+</ul>
+<h4 id="comment-créer-une-series-">Comment créer une Series ?</h4>
+<ul>
+<li>Pour créer une Series, vous pouvez utiliser une <strong>liste</strong>, un <strong>dictionnaire</strong> ou même un <strong>tableau NumPy</strong>. Voici quelques exemples :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Importation de la bibliothèque Pandas</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Création d&#39;une Series à partir d&#39;une liste</span>
+</span></span><span style="display:flex;"><span>ma_serie <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">9</span>])
+</span></span><span style="display:flex;"><span>print(ma_serie)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Création d&#39;une Series à partir d&#39;un dictionnaire</span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;b&#39;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;c&#39;</span>: <span style="color:#ae81ff">3</span>}
+</span></span><span style="display:flex;"><span>ma_serie <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series(data)
+</span></span><span style="display:flex;"><span>print(ma_serie)
+</span></span></code></pre></div><h4 id="comment-accéder-et-sélectionner-des-données-dans-une-series-">Comment accéder et sélectionner des données dans une Series ?</h4>
+<ul>
+<li>Vous pouvez accéder aux éléments d’une Series en utilisant leur index :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Accès par position</span>
+</span></span><span style="display:flex;"><span>print(ma_serie[<span style="color:#ae81ff">0</span>])  <span style="color:#75715e"># La donnée en première position</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Accès par étiquette</span>
+</span></span><span style="display:flex;"><span>print(ma_serie[<span style="color:#e6db74">&#39;a&#39;</span>])   <span style="color:#75715e"># La donnée à l&#39;index &#39;a&#39;</span>
+</span></span></code></pre></div><h2 id="les-dataframes">Les DataFrames</h2>
+<ul>
+<li>Un <strong>DataFrame</strong> est une structure de données <strong>bidimensionnelle</strong> avec des étiquettes de lignes et de colonnes.</li>
+<li>Il est similaire à une <strong>feuille de calcul</strong> ou une table de base de données.</li>
+</ul>
+<h4 id="comment-créer-un-dataframe-">Comment créer un DataFrame ?</h4>
+<ul>
+<li>Vous pouvez créer un DataFrame à partir de diverses sources de données, telles que des <strong>listes de listes</strong>, des <strong>dictionnaires de listes</strong>, ou des <strong>fichiers CSV</strong>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Création d&#39;un DataFrame à partir d&#39;un dictionnaire de listes</span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Nom&#39;</span>: [<span style="color:#e6db74">&#39;Julie&#39;</span>, <span style="color:#e6db74">&#39;Robert&#39;</span>, <span style="color:#e6db74">&#39;Charles&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Age&#39;</span>: [<span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">35</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Ville&#39;</span>: [<span style="color:#e6db74">&#39;Montréal&#39;</span>, <span style="color:#e6db74">&#39;Laval&#39;</span>, <span style="color:#e6db74">&#39;Rimouski&#39;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(data)
+</span></span><span style="display:flex;"><span>print(df)
+</span></span></code></pre></div><h4 id="comment-accéder-et-sélectionner-des-données-dans-un-dataframe-">Comment accéder et sélectionner des données dans un DataFrame ?</h4>
+<p>Vous pouvez sélectionner des colonnes, des lignes ou des sous-ensembles de données en utilisant des méthodes comme <code>loc</code> et <code>iloc</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Sélection d&#39;une colonne</span>
+</span></span><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#39;Nom&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sélection de plusieurs colonnes</span>
+</span></span><span style="display:flex;"><span>print(df[[<span style="color:#e6db74">&#39;Nom&#39;</span>, <span style="color:#e6db74">&#39;Age&#39;</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sélection de lignes par étiquette</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>loc[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sélection de lignes par position</span>
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">0</span>])
+</span></span></code></pre></div><h2 id="le-traitement-de-fichiers-textes">Le traitement de fichiers textes</h2>
+<ul>
+<li>Le traitement des fichiers texte, tels que les fichiers CSV, est essentiel en programmation Python, en particulier dans le domaine de la science des données.</li>
+</ul>
+<h2 id="introduction-aux-fichiers-csv">Introduction aux fichiers CSV</h2>
+<ul>
+<li>CSV signifie <strong>Comma-Separated Values</strong> (valeurs séparées par des virgules).</li>
+<li>C&rsquo;est un format de fichier simple utilisé pour stocker des données tabulaires, comme une feuille de calcul Excel ou une base de données.</li>
+</ul>
+<h2 id="lecture-dun-fichier-csv">Lecture d&rsquo;un fichier CSV</h2>
+<ul>
+<li>La bibliothèque Pandas fournit une fonction <code>read_csv()</code> pour lire les fichiers CSV et les convertir en DataFrame.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;fichier.csv&#39;</span>)
+</span></span></code></pre></div><p><strong>Explications</strong> :</p>
+<ul>
+<li>
+<p><code>pd.read_csv('fichier.csv')</code> : Cette fonction lit le fichier CSV nommé &lsquo;fichier.csv&rsquo;. Le fichier est supposé se trouver dans le même répertoire que le script Python. La fonction retourne un DataFrame où chaque ligne du CSV devient une ligne dans le DataFrame, et les en-têtes de colonne du CSV deviennent les noms de colonne du DataFrame.</p>
+</li>
+<li>
+<p><code>df = </code> : Cette partie du code assigne le DataFrame retourné par <code>pd.read_csv('fichier.csv')</code> à la variable <code>df</code>. Après cette ligne de code, vous pouvez utiliser <code>df</code> pour vous référer au DataFrame.</p>
+</li>
+</ul>
+<h2 id="écriture-dans-un-fichier-csv">Écriture dans un fichier CSV</h2>
+<ul>
+<li>Pandas fournit également une fonction <code>to_csv()</code> pour écrire un DataFrame dans un fichier CSV.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#39;nouveau_fichier.csv&#39;</span>, index<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><p><strong>Explications</strong> :</p>
+<ul>
+<li>
+<p><code>df.to_csv()</code> : Cette fonction écrit le contenu du DataFrame <code>df</code> dans un fichier CSV.</p>
+</li>
+<li>
+<p><code>'nouveau_fichier.csv'</code> : C&rsquo;est l&rsquo;argument de la fonction <code>to_csv()</code>, qui spécifie le nom du fichier CSV dans lequel les données seront écrites. Dans ce cas, le fichier s&rsquo;appellera &rsquo;nouveau_fichier.csv&rsquo;.</p>
+</li>
+<li>
+<p><code>index=False</code> : C&rsquo;est un autre argument de la fonction <code>to_csv()</code>. Lorsqu&rsquo;il est défini sur <code>False</code>, cela signifie que les indices des lignes du DataFrame ne seront pas écrits dans le fichier CSV. Par défaut, <code>to_csv()</code> écrit les indices des lignes dans le fichier CSV, donc si vous ne voulez pas cela, vous devez spécifier <code>index=False</code>.</p>
+</li>
+</ul>
+<h2 id="les-paramètres-de-la-méthode-read_csv">Les paramètres de la méthode <code>read_csv</code></h2>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filepath_or_buffer</code></td>
+<td>Chemin du fichier ou objet de type fichier à lire.</td>
+</tr>
+<tr>
+<td><code>sep</code></td>
+<td>Caractère ou motif regex à utiliser comme délimiteur (par défaut &lsquo;,&rsquo;).</td>
+</tr>
+<tr>
+<td><code>delimiter</code></td>
+<td>Alias pour <code>sep</code>.</td>
+</tr>
+<tr>
+<td><code>header</code></td>
+<td>Ligne(s) à utiliser comme en-têtes de colonnes (par défaut &lsquo;infer&rsquo;).</td>
+</tr>
+<tr>
+<td><code>names</code></td>
+<td>Liste des noms de colonnes à utiliser.</td>
+</tr>
+<tr>
+<td><code>index_col</code></td>
+<td>Colonne(s) à utiliser comme index des lignes.</td>
+</tr>
+<tr>
+<td><code>usecols</code></td>
+<td>Liste des colonnes à lire.</td>
+</tr>
+<tr>
+<td><code>dtype</code></td>
+<td>Type de données pour les colonnes.</td>
+</tr>
+<tr>
+<td><code>engine</code></td>
+<td>Moteur de parsing à utiliser (&lsquo;c&rsquo; ou &lsquo;python&rsquo;).</td>
+</tr>
+<tr>
+<td><code>converters</code></td>
+<td>Dictionnaire de fonctions de conversion pour les colonnes.</td>
+</tr>
+<tr>
+<td><code>true_values</code></td>
+<td>Liste des valeurs à considérer comme True.</td>
+</tr>
+<tr>
+<td><code>false_values</code></td>
+<td>Liste des valeurs à considérer comme False.</td>
+</tr>
+<tr>
+<td><code>skipinitialspace</code></td>
+<td>Ignore les espaces après le délimiteur.</td>
+</tr>
+<tr>
+<td><code>skiprows</code></td>
+<td>Lignes à ignorer au début du fichier.</td>
+</tr>
+<tr>
+<td><code>skipfooter</code></td>
+<td>Lignes à ignorer à la fin du fichier.</td>
+</tr>
+<tr>
+<td><code>nrows</code></td>
+<td>Nombre de lignes à lire.</td>
+</tr>
+<tr>
+<td><code>na_values</code></td>
+<td>Valeurs supplémentaires à considérer comme NA/NaN.</td>
+</tr>
+<tr>
+<td><code>keep_default_na</code></td>
+<td>Garde les valeurs par défaut comme NA/NaN.</td>
+</tr>
+<tr>
+<td><code>na_filter</code></td>
+<td>Détecte les valeurs NA/NaN.</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Affiche des informations supplémentaires lors de la lecture.</td>
+</tr>
+<tr>
+<td><code>skip_blank_lines</code></td>
+<td>Ignore les lignes vides.</td>
+</tr>
+<tr>
+<td><code>parse_dates</code></td>
+<td>Tente de convertir les colonnes en dates.</td>
+</tr>
+<tr>
+<td><code>infer_datetime_format</code></td>
+<td>Infère le format des dates.</td>
+</tr>
+<tr>
+<td><code>keep_date_col</code></td>
+<td>Garde la colonne d&rsquo;origine après conversion en date.</td>
+</tr>
+<tr>
+<td><code>date_parser</code></td>
+<td>Fonction pour analyser les dates.</td>
+</tr>
+<tr>
+<td><code>dayfirst</code></td>
+<td>Considère le premier jour dans les dates.</td>
+</tr>
+<tr>
+<td><code>cache_dates</code></td>
+<td>Met en cache les dates converties.</td>
+</tr>
+<tr>
+<td><code>iterator</code></td>
+<td>Retourne un objet d&rsquo;itération.</td>
+</tr>
+<tr>
+<td><code>chunksize</code></td>
+<td>Nombre de lignes par itération.</td>
+</tr>
+<tr>
+<td><code>compression</code></td>
+<td>Type de compression à utiliser.</td>
+</tr>
+<tr>
+<td><code>thousands</code></td>
+<td>Caractère utilisé pour les séparateurs de milliers.</td>
+</tr>
+<tr>
+<td><code>decimal</code></td>
+<td>Caractère utilisé pour le séparateur décimal.</td>
+</tr>
+<tr>
+<td><code>lineterminator</code></td>
+<td>Caractère utilisé pour terminer les lignes.</td>
+</tr>
+<tr>
+<td><code>quotechar</code></td>
+<td>Caractère utilisé pour les citations.</td>
+</tr>
+<tr>
+<td><code>quoting</code></td>
+<td>Contrôle la citation des champs.</td>
+</tr>
+<tr>
+<td><code>doublequote</code></td>
+<td>Contrôle le doublement des citations.</td>
+</tr>
+<tr>
+<td><code>escapechar</code></td>
+<td>Caractère utilisé pour échapper les délimiteurs.</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Caractère utilisé pour indiquer les commentaires.</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>Encodage du fichier.</td>
+</tr>
+<tr>
+<td><code>encoding_errors</code></td>
+<td>Gestion des erreurs d&rsquo;encodage.</td>
+</tr>
+<tr>
+<td><code>dialect</code></td>
+<td>Dialecte à utiliser pour le parsing.</td>
+</tr>
+<tr>
+<td><code>on_bad_lines</code></td>
+<td>Action à prendre pour les lignes incorrectes.</td>
+</tr>
+<tr>
+<td><code>delim_whitespace</code></td>
+<td>Utilise les espaces comme délimiteurs.</td>
+</tr>
+<tr>
+<td><code>low_memory</code></td>
+<td>Utilise moins de mémoire lors de la lecture.</td>
+</tr>
+<tr>
+<td><code>memory_map</code></td>
+<td>Utilise la mémoire mappée pour la lecture.</td>
+</tr>
+<tr>
+<td><code>float_precision</code></td>
+<td>Précision des nombres flottants.</td>
+</tr>
+<tr>
+<td><code>storage_options</code></td>
+<td>Options de stockage supplémentaires.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="les-paramètres-de-la-méthode-to_csv">Les paramètres de la méthode <code>to_csv</code></h2>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filepath_or_buffer</code></td>
+<td>Chemin du fichier ou objet de type fichier à lire.</td>
+</tr>
+<tr>
+<td><code>sep</code></td>
+<td>Caractère ou motif regex à utiliser comme délimiteur (par défaut &lsquo;,&rsquo;).</td>
+</tr>
+<tr>
+<td><code>delimiter</code></td>
+<td>Alias pour <code>sep</code>.</td>
+</tr>
+<tr>
+<td><code>header</code></td>
+<td>Ligne(s) à utiliser comme en-têtes de colonnes (par défaut &lsquo;infer&rsquo;).</td>
+</tr>
+<tr>
+<td><code>names</code></td>
+<td>Liste des noms de colonnes à utiliser.</td>
+</tr>
+<tr>
+<td><code>index_col</code></td>
+<td>Colonne(s) à utiliser comme index des lignes.</td>
+</tr>
+<tr>
+<td><code>usecols</code></td>
+<td>Liste des colonnes à lire.</td>
+</tr>
+<tr>
+<td><code>dtype</code></td>
+<td>Type de données pour les colonnes.</td>
+</tr>
+<tr>
+<td><code>engine</code></td>
+<td>Moteur de parsing à utiliser (&lsquo;c&rsquo; ou &lsquo;python&rsquo;).</td>
+</tr>
+<tr>
+<td><code>converters</code></td>
+<td>Dictionnaire de fonctions de conversion pour les colonnes.</td>
+</tr>
+<tr>
+<td><code>true_values</code></td>
+<td>Liste des valeurs à considérer comme True.</td>
+</tr>
+<tr>
+<td><code>false_values</code></td>
+<td>Liste des valeurs à considérer comme False.</td>
+</tr>
+<tr>
+<td><code>skipinitialspace</code></td>
+<td>Ignore les espaces après le délimiteur.</td>
+</tr>
+<tr>
+<td><code>skiprows</code></td>
+<td>Lignes à ignorer au début du fichier.</td>
+</tr>
+<tr>
+<td><code>skipfooter</code></td>
+<td>Lignes à ignorer à la fin du fichier.</td>
+</tr>
+<tr>
+<td><code>nrows</code></td>
+<td>Nombre de lignes à lire.</td>
+</tr>
+<tr>
+<td><code>na_values</code></td>
+<td>Valeurs supplémentaires à considérer comme NA/NaN.</td>
+</tr>
+<tr>
+<td><code>keep_default_na</code></td>
+<td>Garde les valeurs par défaut comme NA/NaN.</td>
+</tr>
+<tr>
+<td><code>na_filter</code></td>
+<td>Détecte les valeurs NA/NaN.</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Affiche des informations supplémentaires lors de la lecture.</td>
+</tr>
+<tr>
+<td><code>skip_blank_lines</code></td>
+<td>Ignore les lignes vides.</td>
+</tr>
+<tr>
+<td><code>parse_dates</code></td>
+<td>Tente de convertir les colonnes en dates.</td>
+</tr>
+<tr>
+<td><code>infer_datetime_format</code></td>
+<td>Infère le format des dates.</td>
+</tr>
+<tr>
+<td><code>keep_date_col</code></td>
+<td>Garde la colonne d&rsquo;origine après conversion en date.</td>
+</tr>
+<tr>
+<td><code>date_parser</code></td>
+<td>Fonction pour analyser les dates.</td>
+</tr>
+<tr>
+<td><code>dayfirst</code></td>
+<td>Considère le premier jour dans les dates.</td>
+</tr>
+<tr>
+<td><code>cache_dates</code></td>
+<td>Met en cache les dates converties.</td>
+</tr>
+<tr>
+<td><code>iterator</code></td>
+<td>Retourne un objet d&rsquo;itération.</td>
+</tr>
+<tr>
+<td><code>chunksize</code></td>
+<td>Nombre de lignes par itération.</td>
+</tr>
+<tr>
+<td><code>compression</code></td>
+<td>Type de compression à utiliser.</td>
+</tr>
+<tr>
+<td><code>thousands</code></td>
+<td>Caractère utilisé pour les séparateurs de milliers.</td>
+</tr>
+<tr>
+<td><code>decimal</code></td>
+<td>Caractère utilisé pour le séparateur décimal.</td>
+</tr>
+<tr>
+<td><code>lineterminator</code></td>
+<td>Caractère utilisé pour terminer les lignes.</td>
+</tr>
+<tr>
+<td><code>quotechar</code></td>
+<td>Caractère utilisé pour les citations.</td>
+</tr>
+<tr>
+<td><code>quoting</code></td>
+<td>Contrôle la citation des champs.</td>
+</tr>
+<tr>
+<td><code>doublequote</code></td>
+<td>Contrôle le doublement des citations.</td>
+</tr>
+<tr>
+<td><code>escapechar</code></td>
+<td>Caractère utilisé pour échapper les délimiteurs.</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>Caractère utilisé pour indiquer les commentaires.</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>Encodage du fichier.</td>
+</tr>
+<tr>
+<td><code>encoding_errors</code></td>
+<td>Gestion des erreurs d&rsquo;encodage.</td>
+</tr>
+<tr>
+<td><code>dialect</code></td>
+<td>Dialecte à utiliser pour le parsing.</td>
+</tr>
+<tr>
+<td><code>on_bad_lines</code></td>
+<td>Action à prendre pour les lignes incorrectes.</td>
+</tr>
+<tr>
+<td><code>delim_whitespace</code></td>
+<td>Utilise les espaces comme délimiteurs.</td>
+</tr>
+<tr>
+<td><code>low_memory</code></td>
+<td>Utilise moins de mémoire lors de la lecture.</td>
+</tr>
+<tr>
+<td><code>memory_map</code></td>
+<td>Utilise la mémoire mappée pour la lecture.</td>
+</tr>
+<tr>
+<td><code>float_precision</code></td>
+<td>Précision des nombres flottants.</td>
+</tr>
+<tr>
+<td><code>storage_options</code></td>
+<td>Options de stockage supplémentaires.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="manipulation-des-données">Manipulation des données</h2>
+<ul>
+<li>Une fois que les données sont chargées dans un DataFrame, vous pouvez utiliser les nombreuses fonctionnalités de Pandas, pour manipuler les données.</li>
+<li>Par exemple, pour les nettoyer, filtrer les lignes, trier les données, grouper les données, etc.</li>
+</ul>
+<h2 id="manipulation-de-données">Manipulation de données</h2>
+<ul>
+<li>La manipulation de données est une étape importante dans l&rsquo;analyse de données.</li>
+<li>Elle permet de <strong>nettoyer</strong>, <strong>transformer</strong> et <strong>préparer les données</strong> pour une analyse plus approfondie.</li>
+<li>Pandas offre une multitude de méthodes pour manipuler les données de manière efficace et flexible.</li>
+</ul>
+<h3 id="exploration-des-données">Exploration des données</h3>
+<ul>
+<li>Avant de nettoyer les données, c&rsquo;est important de comprendre la structure et le contenu de vos données.</li>
+<li>Pour obtenir un aperçu de vos données utilisez les méthodes suivantes:
+<ul>
+<li><code>head()</code></li>
+<li><code>info()</code> et</li>
+<li><code>describe()</code>.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#f92672">.</span>head()
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>head(n) <span style="color:#75715e"># où n est le nombre de lignes à afficher</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>info()
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>describe()
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;colonne&#39;</span>]<span style="color:#f92672">.</span>describe() <span style="color:#75715e"># où &#39;colonne&#39; est le nom de la colonne à afficher</span>
+</span></span></code></pre></div><h3 id="nettoyage-de-données">Nettoyage de Données</h3>
+<ul>
+<li>Le nettoyage des données est souvent la première étape dans la manipulation de données.</li>
+<li>Cela inclut :
+<ul>
+<li>la gestion des valeurs manquantes,</li>
+<li>la suppression des doublons et</li>
+<li>la correction des erreurs de données.</li>
+</ul>
+</li>
+</ul>
+<h4 id="la-gestion-des-valeurs-manquantes">La gestion des valeurs manquantes</h4>
+<ul>
+<li>Les valeurs manquantes peuvent être gérées de différentes manières, comme les <strong>supprimer</strong> ou les <strong>remplacer</strong> par une valeur spécifique.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Création d&#39;un DataFrame avec des valeurs manquantes</span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Nom&#39;</span>: [<span style="color:#e6db74">&#39;Julie&#39;</span>, <span style="color:#e6db74">&#39;Robert&#39;</span>, <span style="color:#e6db74">&#39;Charles&#39;</span>], <span style="color:#e6db74">&#39;Age&#39;</span>: [<span style="color:#ae81ff">25</span>, <span style="color:#66d9ef">None</span>, <span style="color:#ae81ff">35</span>], <span style="color:#e6db74">&#39;Ville&#39;</span>: [<span style="color:#e6db74">&#39;Montréal&#39;</span>, <span style="color:#e6db74">&#39;Laval&#39;</span>, <span style="color:#66d9ef">None</span>]}
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Suppression des lignes avec des valeurs manquantes</span>
+</span></span><span style="display:flex;"><span>df_suppr <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>dropna()
+</span></span><span style="display:flex;"><span>print(df_suppr)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Remplacement des valeurs manquantes par une valeur spécifique</span>
+</span></span><span style="display:flex;"><span>df_remplace <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>fillna({<span style="color:#e6db74">&#39;Age&#39;</span>: df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>mean(), <span style="color:#e6db74">&#39;Ville&#39;</span>: <span style="color:#e6db74">&#39;Inconnue&#39;</span>})
+</span></span><span style="display:flex;"><span>print(df_remplace)
+</span></span></code></pre></div><h4 id="traitement-dautres-valeurs-comme-valeurs-manquantes">Traitement d&rsquo;autres valeurs comme valeurs manquantes</h4>
+<ul>
+<li>
+<p>La méthode <code>read_csv</code> fourni un paramètre <code>na_values</code> pour pouvoir spécifier d&rsquo;autres valeurs que <code>NaN</code>(Not a Number) à considérer comme étant manquantes, lors de la lecture d&rsquo;un fichier <code>csv</code>.</p>
+</li>
+<li>
+<p><strong><code>na_values</code></strong> : Ce paramètre spécifie quelles valeurs doivent être traitées comme NaN (Not a Number, utilisé pour représenter les données manquantes ou indéfinies) dans un DataFrame.</p>
+</li>
+</ul>
+<p><strong>Exemple</strong> :</p>
+<ul>
+<li>Supposons que vous ayez un fichier CSV nommé &lsquo;donnees.csv&rsquo; qui ressemble à ceci :</li>
+</ul>
+<pre tabindex="0"><code>age,poids,taille
+25,70,1.75
+30,&#34;?&#34;,1.80
+35,75,&#34;n.a&#34;
+</code></pre><ul>
+<li>
+<p>Dans ce fichier, les valeurs manquantes sont représentées par &ldquo;?&rdquo; et &ldquo;n.a&rdquo;.</p>
+</li>
+<li>
+<p>Vous pouvez utiliser le paramètre <code>na_values</code> pour indiquer à pandas de traiter ces valeurs comme NaN (Not a Number) lors de la lecture du fichier.</p>
+</li>
+<li>
+<p>Voici comment :</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;donnees.csv&#39;</span>, na_values<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;?&#34;</span>, <span style="color:#e6db74">&#34;n.a&#34;</span>])
+</span></span></code></pre></div><ul>
+<li>Après l&rsquo;exécution de ce code, le DataFrame <code>df</code> ressemblera à ceci :</li>
+</ul>
+<pre tabindex="0"><code>   age  poids  taille
+0   25   70.0    1.75
+1   30    NaN    1.80
+2   35   75.0     NaN
+</code></pre><h4 id="la-suppression-des-doublons">La suppression des doublons</h4>
+<ul>
+<li>Les doublons peuvent être supprimés pour éviter les erreurs dans l&rsquo;analyse.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Suppression des doublons</span>
+</span></span><span style="display:flex;"><span>df_unique <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>drop_duplicates()
+</span></span><span style="display:flex;"><span>print(df_unique)
+</span></span></code></pre></div><h4 id="la-transformation-de-données">La transformation de données</h4>
+<ul>
+<li>La transformation de données inclut :
+<ul>
+<li><strong>l&rsquo;ajout</strong> de colonnes,</li>
+<li><strong>la suppression</strong> de colonnes,</li>
+<li>la <strong>modification</strong> de colonnes,</li>
+<li>l&rsquo;application de fonctions sur les données.</li>
+</ul>
+</li>
+</ul>
+<h5 id="lajout-et-la-suppression-de-colonnes">L&rsquo;ajout et la suppression de colonnes</h5>
+<ul>
+<li>Vous pouvez facilement ajouter ou supprimer des colonnes dans un DataFrame.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Ajout d&#39;une nouvelle colonne</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;Pays&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;France&#39;</span>
+</span></span><span style="display:flex;"><span>print(df)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Suppression d&#39;une colonne</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>drop(columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Ville&#39;</span>])
+</span></span><span style="display:flex;"><span>print(df)
+</span></span></code></pre></div><h5 id="renommage-de-colonnes">Renommage de colonnes</h5>
+<ul>
+<li>Les colonnes peuvent être renommées pour une meilleure clarté.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Renommage des colonnes</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;Nom&#39;</span>: <span style="color:#e6db74">&#39;Prenom&#39;</span>, <span style="color:#e6db74">&#39;Age&#39;</span>: <span style="color:#e6db74">&#39;Annees&#39;</span>})
+</span></span><span style="display:flex;"><span>print(df)
+</span></span></code></pre></div><h5 id="application-de-fonctions">Application de fonctions</h5>
+<ul>
+<li>Vous pouvez appliquer des fonctions personnalisées à des colonnes ou à des lignes entières.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Application d&#39;une fonction à une colonne</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;Age&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">if</span> pd<span style="color:#f92672">.</span>notnull(x) <span style="color:#66d9ef">else</span> x)
+</span></span><span style="display:flex;"><span>print(df)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Application d&#39;une fonction à l&#39;ensemble du DataFrame</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>applymap(<span style="color:#66d9ef">lambda</span> x: str(x)<span style="color:#f92672">.</span>upper() <span style="color:#66d9ef">if</span> isinstance(x, str) <span style="color:#66d9ef">else</span> x)
+</span></span><span style="display:flex;"><span>print(df)
+</span></span></code></pre></div><h2 id="lanalyse-de-données">L&rsquo;analyse de données</h2>
+<ul>
+<li>L&rsquo;analyse de données inclut le calcul de statistiques descriptives, le filtre, le tri, le groupement de données et l&rsquo;affichage de graphiques avec MatplotLib.</li>
+</ul>
+<h3 id="les-statistiques-descriptives">Les statistiques descriptives</h3>
+<ul>
+<li>Pandas permet de calculer facilement des statistiques descriptives comme la moyenne, la médiane et l&rsquo;écart-type.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Calcul de la moyenne et de l&#39;écart-type</span>
+</span></span><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>mean())
+</span></span><span style="display:flex;"><span>print(df[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>std())
+</span></span></code></pre></div><h3 id="filtrer-les-données">Filtrer les données</h3>
+<ul>
+<li>Le filtre de données permet de visualiser une catégorie précise de données</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df_filtre <span style="color:#f92672">=</span> df[df[<span style="color:#e6db74">&#39;Age&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">18</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Trier les données</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span> Le tri de données permet de les visualiser dans une ordre précis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">```</span>python
+</span></span><span style="display:flex;"><span>df_trie <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#39;Age&#39;</span>)
+</span></span></code></pre></div><h3 id="grouper-les-données">Grouper les données</h3>
+<ul>
+<li>Le groupement de données permet de calculer des statistiques agrégées pour des sous-ensembles de données.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Groupement par une colonne et calcul de la moyenne</span>
+</span></span><span style="display:flex;"><span>groupe <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Ville&#39;</span>)[<span style="color:#e6db74">&#39;Age&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>print(groupe)
+</span></span></code></pre></div><h2 id="la-manipulation-de-dates">La manipulation de dates</h2>
+<p>La manipulation des dates et des heures est une compétence essentielle en programmation, notamment pour les applications de planification, d&rsquo;analyse de données et de gestion de bases de données. Python offre plusieurs modules pour travailler avec les dates et les heures, dont le plus utilisé est le module <code>datetime</code>.</p>
+<h3 id="importation-du-module">Importation du module</h3>
+<p>Pour commencer à travailler avec les dates et les heures, vous devez importer le module <code>datetime</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime
+</span></span></code></pre></div><h2 id="création-dobjets-date-et-heure">Création d&rsquo;objets Date et Heure</h2>
+<h3 id="date">Date</h3>
+<p>Pour créer un objet date, utilisez la classe <code>date</code> du module <code>datetime</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> date
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Créer une date pour le 22 mai 2023</span>
+</span></span><span style="display:flex;"><span>ma_date <span style="color:#f92672">=</span> date(<span style="color:#ae81ff">2023</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">22</span>)
+</span></span><span style="display:flex;"><span>print(ma_date)  <span style="color:#75715e"># Affiche : 2023-05-22</span>
+</span></span></code></pre></div><h3 id="heure">Heure</h3>
+<p>Pour créer un objet heure, utilisez la classe <code>time</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Créer une heure pour 14h30m15s</span>
+</span></span><span style="display:flex;"><span>mon_heure <span style="color:#f92672">=</span> time(<span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>print(mon_heure)  <span style="color:#75715e"># Affiche : 14:30:15</span>
+</span></span></code></pre></div><h3 id="date-et-heure">Date et Heure</h3>
+<p>Pour combiner une date et une heure, utilisez la classe <code>datetime</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Créer une date et une heure pour le 22 mai 2023 à 14h30m15s</span>
+</span></span><span style="display:flex;"><span>ma_datetime <span style="color:#f92672">=</span> datetime(<span style="color:#ae81ff">2023</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>print(ma_datetime)  <span style="color:#75715e"># Affiche : 2023-05-22 14:30:15</span>
+</span></span></code></pre></div><h2 id="manipulation-des-dates-et-heures">Manipulation des Dates et Heures</h2>
+<h3 id="extraction-des-composants">Extraction des composants</h3>
+<ul>
+<li>Vous pouvez extraire les composants individuels d&rsquo;un objet date ou datetime :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Extraire l&#39;année, le mois et le jour</span>
+</span></span><span style="display:flex;"><span>annee <span style="color:#f92672">=</span> ma_date<span style="color:#f92672">.</span>year
+</span></span><span style="display:flex;"><span>mois <span style="color:#f92672">=</span> ma_date<span style="color:#f92672">.</span>month
+</span></span><span style="display:flex;"><span>jour <span style="color:#f92672">=</span> ma_date<span style="color:#f92672">.</span>day
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(annee, mois, jour)  <span style="color:#75715e"># Affiche : 2023 5 22</span>
+</span></span></code></pre></div><h3 id="calculs-avec-les-dates">Calculs avec les dates</h3>
+<ul>
+<li>Le module <code>datetime</code> permet également de faire des calculs avec les dates en utilisant la classe <code>timedelta</code> :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> timedelta
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ajouter 10 jours à une date</span>
+</span></span><span style="display:flex;"><span>nouvelle_date <span style="color:#f92672">=</span> ma_date <span style="color:#f92672">+</span> timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>print(nouvelle_date)  <span style="color:#75715e"># Affiche : 2023-06-01</span>
+</span></span></code></pre></div><h3 id="formatage-des-dates">Formatage des dates</h3>
+<ul>
+<li>Pour afficher les dates dans différents formats, utilisez la méthode <code>strftime</code> :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Formatage de la date</span>
+</span></span><span style="display:flex;"><span>date_formatee <span style="color:#f92672">=</span> ma_date<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">/%m/%Y&#34;</span>)
+</span></span><span style="display:flex;"><span>print(date_formatee)  <span style="color:#75715e"># Affiche : 22/05/2023</span>
+</span></span></code></pre></div><h2 id="visualisation-des-données">Visualisation des données</h2>
+<ul>
+<li>Bien que Pandas ne soit pas spécialement conçu pour la visualisation, il offre une intégration avec la bibliothèque <strong>Matplotlib</strong>, permettant de créer rapidement des graphiques pour visualiser les données:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Tracer un histogramme de la colonne &#39;Taille&#39;</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;Taille&#39;</span>]<span style="color:#f92672">.</span>plot<span style="color:#f92672">.</span>hist()
+</span></span></code></pre></div><ul>
+<li><strong>NB</strong>: Pour tracer les graphiques, nous utiliserons la bibliothèque <strong>Matplotlib</strong>.</li>
+</ul>
+<p>Pour tout savoir sur Pandas: <a href="https://pandas.pydata.org/" title="Pandas" target="_blank">Site officiel Pandas</a>.</p>
+<h2 id="atelier">Atelier</h2>
+<p><a href="atelier-Pandas.ipynb">Atelier sur la bibliothèque Pandas</a></p>
+<p><a href="iris.csv">Fichier iris.csv</a></p>
+
+            <footer class="footline">
+            </footer>
+          </article>
+        </div>
+      </main>
+    </div>
+    <aside id="sidebar" class="default-animation" dir="ltr">
+      <div id="header-wrapper" class="default-animation">
+        <div id="header" class="default-animation">
+<a href="/">
+	<img src="/images/logoSN.png">
+</a>
+
+
+        </div>
+        <div class="searchbox default-animation">
+          <i class="fas fa-search" title="Search (CTRL+ALT+f)"></i>
+          <label class="a11y-only" for="search-by">Search</label>
+          <input data-search-input id="search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+          <span data-search-clear=""><i class="fas fa-times"></i></span>
+        </div>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/js/auto-complete.js?1723907842" defer></script>
+        <script src="/js/lunr/lunr.min.js?1723907842" defer></script>
+        <script src="/js/lunr/lunr.stemmer.support.min.js?1723907842" defer></script>
+        <script src="/js/lunr/lunr.multi.min.js?1723907842" defer></script>
+        <script src="/js/lunr/lunr.en.min.js?1723907842" defer></script>
+        <script src="/js/search.js?1723907842" defer></script>
+      </div>
+      <div id="content-wrapper" class="highlightable">
+        <ul class="topics">
+          <li data-nav-id="/base-de-connaissances/index.html" class="dd-item"><a href="/base-de-connaissances/index.html">Base De Connaissances</a><ul id="subsections-50e3127ed9be85174136aa0c5cb6d6d7">
+          <li data-nav-id="/base-de-connaissances/vs-code/index.html" class="dd-item"><a href="/base-de-connaissances/vs-code/index.html">VS Code</a></li>
+          <li data-nav-id="/base-de-connaissances/le-nommage-en-python/index.html" class="dd-item"><a href="/base-de-connaissances/le-nommage-en-python/index.html">Le nommage des variables</a></li>
+          <li data-nav-id="/base-de-connaissances/la-documentation/index.html" class="dd-item"><a href="/base-de-connaissances/la-documentation/index.html">La documentation</a></li>
+          <li data-nav-id="/base-de-connaissances/jupyter/index.html" class="dd-item"><a href="/base-de-connaissances/jupyter/index.html">Jupyter</a></li>
+          <li data-nav-id="/base-de-connaissances/markdown/index.html" class="dd-item"><a href="/base-de-connaissances/markdown/index.html">MarkDown</a></li>
+          <li data-nav-id="/base-de-connaissances/techniques-de-debug/index.html" class="dd-item"><a href="/base-de-connaissances/techniques-de-debug/index.html">Techniques de debug</a></li></ul></li>
+          <li data-nav-id="/cours/index.html" class="dd-item parent"><a href="/cours/index.html">Cours</a><ul id="subsections-5dafcf26d5dda8a0eed007b7acec128c">
+          <li data-nav-id="/cours/introduction-%C3%A0-la-programmation/index.html" class="dd-item"><a href="/cours/introduction-%C3%A0-la-programmation/index.html">Introduction à la programmation</a></li>
+          <li data-nav-id="/cours/analyse-de-probl%C3%A8mes/index.html" class="dd-item"><a href="/cours/analyse-de-probl%C3%A8mes/index.html">Analyse de problèmes</a></li>
+          <li data-nav-id="/cours/ordinogramme/index.html" class="dd-item"><a href="/cours/ordinogramme/index.html">Ordinogramme</a></li>
+          <li data-nav-id="/cours/bases-de-python/index.html" class="dd-item"><a href="/cours/bases-de-python/index.html">Bases de Python</a></li>
+          <li data-nav-id="/cours/int%C3%A9ragir-avec-le-programme/index.html" class="dd-item"><a href="/cours/int%C3%A9ragir-avec-le-programme/index.html">Intéragir avec le programme</a></li>
+          <li data-nav-id="/cours/structures-conditionnelles/index.html" class="dd-item"><a href="/cours/structures-conditionnelles/index.html">Structures conditionnelles</a></li>
+          <li data-nav-id="/cours/la-r%C3%A9p%C3%A9tition-les-boucles/index.html" class="dd-item"><a href="/cours/la-r%C3%A9p%C3%A9tition-les-boucles/index.html">La répétition - Les boucles</a></li>
+          <li data-nav-id="/cours/les-listes/index.html" class="dd-item"><a href="/cours/les-listes/index.html">Les Listes</a></li>
+          <li data-nav-id="/cours/les-structures-de-donn%C3%A9es/index.html" class="dd-item"><a href="/cours/les-structures-de-donn%C3%A9es/index.html">Les Structures de Données</a></li>
+          <li data-nav-id="/cours/les-chaines-de-caract%C3%A8res/index.html" class="dd-item"><a href="/cours/les-chaines-de-caract%C3%A8res/index.html">Les Chaînes de caractères</a></li>
+          <li data-nav-id="/cours/les-librairies-syst%C3%A8mes/index.html" class="dd-item"><a href="/cours/les-librairies-syst%C3%A8mes/index.html">Les Librairies systèmes</a></li>
+          <li data-nav-id="/cours/les-objets/index.html" class="dd-item"><a href="/cours/les-objets/index.html">Les Objets</a></li>
+          <li data-nav-id="/cours/les-sous-programmes/index.html" class="dd-item"><a href="/cours/les-sous-programmes/index.html">Les sous-programmes</a></li>
+          <li data-nav-id="/cours/la-port%C3%A9e-des-variables/index.html" class="dd-item"><a href="/cours/la-port%C3%A9e-des-variables/index.html">La portées des variables</a></li>
+          <li data-nav-id="/cours/traces-dex%C3%A9cution/index.html" class="dd-item"><a href="/cours/traces-dex%C3%A9cution/index.html">Traces d&#39;exécution</a></li>
+          <li data-nav-id="/cours/pandas/index.html" class="dd-item active"><a href="/cours/pandas/index.html">Pandas</a></li>
+          <li data-nav-id="/cours/matplotlib/index.html" class="dd-item"><a href="/cours/matplotlib/index.html">Matplotlib</a></li>
+          <li data-nav-id="/cours/numpy/index.html" class="dd-item"><a href="/cours/numpy/index.html">Numpy</a></li>
+          <li data-nav-id="/cours/projet-fil-rouge/index.html" class="dd-item alwaysopen"><a href="/cours/projet-fil-rouge/index.html">Projet - Fil Rouge</a><ul id="subsections-eba5705f86569bdeccadcff4dcc66c91">
+          <li data-nav-id="/cours/projet-fil-rouge/partie-1/index.html" class="dd-item"><a href="/cours/projet-fil-rouge/partie-1/index.html">Projet - Partie 1</a></li>
+          <li data-nav-id="/cours/projet-fil-rouge/partie-2/index.html" class="dd-item"><a href="/cours/projet-fil-rouge/partie-2/index.html">Projet - Partie 2</a></li>
+          <li data-nav-id="/cours/projet-fil-rouge/partie-3/index.html" class="dd-item"><a href="/cours/projet-fil-rouge/partie-3/index.html">Projet - Partie 3</a></li>
+          <li data-nav-id="/cours/projet-fil-rouge/partie-4/index.html" class="dd-item"><a href="/cours/projet-fil-rouge/partie-4/index.html">Projet - Partie 4</a></li></ul></li></ul></li>
+        </ul>
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+          <ul>
+            <li id="select-language-container" class="footerLangSwitch">
+              <div class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <label class="a11y-only" for="select-language">Language</label>
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </div>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <div class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <label class="a11y-only" for="select-variant">Theme</label>
+                  <select id="select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                    <option id="zen-dark" value="zen-dark" selected>Zen Dark</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </div>
+              <script>window.variants && variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks"><button class="padding" onclick="clearHistory();"><i class="fas fa-history fa-fw"></i> Clear History</button></li>
+          </ul>
+        </div>
+        <div id="footer" class="footerFooter showFooter">
+	    <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+        </div>
+      </div>
+    </aside>
+    <script src="/js/clipboard.min.js?1723907842" defer></script>
+    <script src="/js/perfect-scrollbar.min.js?1723907842" defer></script>
+    <script src="/js/featherlight.min.js?1723907842" defer></script>
+    <script src="/js/theme.js?1723907842" defer></script>
+  </body>
+</html>
