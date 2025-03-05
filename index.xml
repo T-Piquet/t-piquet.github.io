@@ -1,24 +1,75 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>420-SN1-A24</title>
-    <link>http://example.org/index.html</link>
-    <description>Recent content on 420-SN1-A24</description>
+    <title>La maison on Monsieur Piquet</title>
+    <link>/</link>
+    <description>Recent content in La maison on Monsieur Piquet</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <language>fr</language>
+    <managingEditor>youremail@example.com (Monsieur Piquet)</managingEditor>
+    <webMaster>youremail@example.com (Monsieur Piquet)</webMaster>
+    <copyright>© 2025 Monsieur Piquet</copyright>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
-      <title>Base De Connaissances</title>
-      <link>http://example.org/base-de-connaissances/index.html</link>
+      <title>Mastering</title>
+      <link>/music/mastering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://example.org/base-de-connaissances/index.html</guid>
-      <description></description>
+      <author>youremail@example.com (Monsieur Piquet)</author>
+      <guid>/music/mastering/</guid>
+      <description>Service de mastering</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/music/mastering/featured.jpg" />
     </item>
+    
     <item>
-      <title>Cours</title>
-      <link>http://example.org/cours/index.html</link>
+      <title>Musique en studio</title>
+      <link>/music/musique_studio/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://example.org/cours/index.html</guid>
-      <description></description>
+      <author>youremail@example.com (Monsieur Piquet)</author>
+      <guid>/music/musique_studio/</guid>
+      <description>Mes productions musicale enregistrées.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/music/musique_studio/featured.jpg" />
     </item>
+    
+    <item>
+      <title>Musique Live</title>
+      <link>/music/musique_live/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Monsieur Piquet)</author>
+      <guid>/music/musique_live/</guid>
+      <description>La musique en publique, en solo, aussi surtout en équipe.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/music/musique_live/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Episode 1</title>
+      <link>/music/le_club/semaine1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Monsieur Piquet)</author>
+      <guid>/music/le_club/semaine1/</guid>
+      <description>La où j&amp;rsquo;ai eu un bug a l&amp;rsquo;enregistrement:</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/music/le_club/semaine1/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Programmation</title>
+      <link>/academics/coding/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Monsieur Piquet)</author>
+      <guid>/academics/coding/</guid>
+      <description>Divers projet de programmation disponnible en open source.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/academics/coding/featured.png" />
+    </item>
+    
+    <item>
+      <title>Publications scientifique</title>
+      <link>/academics/published/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Monsieur Piquet)</author>
+      <guid>/academics/published/</guid>
+      <description>Computer Architecture / acoustics</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/academics/published/featured.png" />
+    </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,15 @@
+<rss version="2.0">
+  <channel>
+    <title>Le Thomas club</title>
+    <link>http://192.168.0.111:1313</link>
+    <description>Your podcast description</description>
+    <language>en-us</language>
+    <item>
+      <title>Semaine 1 Podcast</title>
+      <description>Podcast for the first week</description>
+      <enclosure url="http://192.168.0.111:1313/music/le_club/semaine1/semaine1.mp3" length="12345" type="audio/mpeg" />
+      <guid>http://192.168.0.111:1313/music/le_club/semaine1/semaine1.mp3</guid>
+      <pubDate>Mon, 01 Jan 2025 10:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

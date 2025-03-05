@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Le club on Monsieur Piquet</title>
+    <link>/music/le_club/</link>
+    <description>Recent content in Le club on Monsieur Piquet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <managingEditor>youremail@example.com (Monsieur Piquet)</managingEditor>
+    <webMaster>youremail@example.com (Monsieur Piquet)</webMaster>
+    <copyright>© 2025 Monsieur Piquet</copyright>
+    <atom:link href="/music/le_club/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Episode 1</title>
+      <link>/music/le_club/semaine1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Monsieur Piquet)</author>
+      <guid>/music/le_club/semaine1/</guid>
+      <description>La où j&amp;rsquo;ai eu un bug a l&amp;rsquo;enregistrement:</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/music/le_club/semaine1/featured.jpg" />
+    </item>
+    
+  </channel>
+</rss>
